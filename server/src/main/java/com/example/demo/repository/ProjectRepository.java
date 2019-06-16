@@ -10,11 +10,13 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
 
+
 @RepositoryRestResource
 public interface ProjectRepository extends JpaRepository<Project, Long>, ProjectRepositoryCustom {
-
+    // default implementation from JPA
     Project findByName(final String name);
 
+    // this is to handle custom query
     @Repository
     class ProjectRepositoryImpl implements ProjectRepositoryCustom {
         @PersistenceContext
